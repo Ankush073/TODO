@@ -12,9 +12,9 @@ The following endpoints are available:
 5. **DELETE /tasks/:id**: Delete a task by its ID.
 
 ## Requirements
-- Node.js >= 14.0.0
-- npm >= 6.0.0
-- MongoDB (for data persistence)
+- Node.js >= v21.6.2
+- npm >= 10.2.4
+- MongoDB 
 
 ## Installation
 
@@ -25,17 +25,12 @@ Follow these steps to set up the project:
     git clone https://github.com/your-username/todo-list-api.git
     ```
 
-2. **Navigate to the project folder**:
-    ```bash
-    cd todo-list-api
-    ```
-
-3. **Install dependencies**:
+2. **Install dependencies**:
     ```bash
     npm install
     ```
 
-4. **Set up environment variables**:
+3. **Set up environment variables**:
     - Create a `.env` file in the root directory of your project.
     - Add the following content to your `.env` file:
 
@@ -62,50 +57,10 @@ Follow these steps to set up the project:
     - **PORT**: Replace `YOUR_PORT_NUMBER` with the desired port number (default is `8000`).
     - **ACCESS_TOKEN_SECRET** and **REFRESH_TOKEN_SECRET**: Replace with a secret key of your choice for signing JWTs. For added security, make sure this key is complex and kept confidential.
 
-5. **Start the server**:
+4. **Start the server**:
     ```bash
-    npm start
+    npm run dev
     ```
 
     The API will now be running at `http://localhost:YOUR_PORT_NUMBER` (replace with the port number you configured in `.env`).
 
-## Authentication
-
-This API uses JWT for user authentication. To access protected routes (e.g., creating, updating, and deleting tasks), you need to log in and receive a token.
-
-### Register a new user
-
-1. **POST /auth/register**: Create a new user. Provide the following in the request body:
-
-    ```json
-    {
-        "username": "your-username",
-        "password": "your-password"
-    }
-    ```
-
-### Login with a user
-
-2. **POST /auth/login**: Log in and get a JWT token. Provide the following in the request body:
-
-    ```json
-    {
-        "username": "your-username",
-        "password": "your-password"
-    }
-    ```
-
-   The response will contain the JWT token:
-
-    ```json
-    {
-        "token": "your_jwt_token"
-    }
-    ```
-
-### Use the JWT Token
-
-To access protected routes (like creating tasks), you need to include the JWT token in the **Authorization** header of your requests:
-
-```bash
-Authorization: Bearer your_jwt_token
